@@ -1,0 +1,164 @@
+footer{ /* 밑부분? 색깔 */
+    background-color: #E34A45;
+}
+
+.bg-body-tertiary{ /* 네비게이션 바 색깔 */
+    background-color: #E34A45!important;
+}
+
+.problem-solver-68-mark{ /* 흥신소 68 마크 사이즈 */
+    width: 50px;
+    height: 40px;
+}
+
+.cc{ /* 조직도 페이지 */
+    display: flex;
+    justify-content: center;
+
+    /* 조직도 사원들 위아래 띄우기 */
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.member{ /* 흥신소 멤버 사진 바탕색 */
+    background-color: wheat;
+}
+
+.main-zo{ /* 배경 패턴 */
+    /* background-color: #ee817d; */
+    --s: 40px; /* control the size */
+    
+    --_c: #0000 75%,#ff7570 0; /* color 1 */
+    --_g1: conic-gradient(at 10% 50%,var(--_c));
+    --_g2: conic-gradient(at 50% 10%,var(--_c));
+    background:
+        var(--_g1),
+        var(--_g1) calc(1*var(--s)) calc(3*var(--s)),
+        var(--_g1) calc(2*var(--s)) calc(1*var(--s)),
+        var(--_g1) calc(3*var(--s)) calc(4*var(--s)),
+        var(--_g1) calc(4*var(--s)) calc(2*var(--s)),
+        var(--_g2) 0                calc(4*var(--s)),
+        var(--_g2) calc(1*var(--s)) calc(2*var(--s)),
+        var(--_g2) calc(2*var(--s)) 0,
+        var(--_g2) calc(3*var(--s)) calc(3*var(--s)),
+        var(--_g2) calc(4*var(--s)) calc(1*var(--s)),
+        #604848; /* color 2 */
+    background-size: calc(5*var(--s)) calc(5*var(--s));
+}
+
+.center{ /* 글씨를 수직+중앙으로 연결하고, 배경색 추가 */
+    display: flex;
+    align-items: center;
+    background-color: wheat;
+    width: 270px; /* 길이 맞추기 */
+}
+
+/* 여기서 부터 조직도 관련 CSS */
+* {margin: 0; padding: 0;}
+
+.tree ul {
+    padding-top: 20px; position: relative;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+.tree li {
+    text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before, .tree li::after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%; height: 20px;
+}
+.tree li::after{
+	right: auto; left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+	display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after{
+	border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before{
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after{
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 3px solid #000000;
+	width: 0; height: 20px;
+}
+
+.tree li a{
+	border: 3px solid #000000;
+	padding: 5px 10px;
+	text-decoration: none;
+	color: #000000;
+	font-family: arial, verdana, tahoma;
+	display: inline-block;
+    background: #000000;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover {
+	background: #E34A45; color: #000000; border: 3px solid #000000;
+}
+/*Connector styles on hover*/
+.tree li a:hover+ul li::after, 
+.tree li a:hover+ul li::before, 
+.tree li a:hover+ul::before, 
+.tree li a:hover+ul ul::before{
+	border-color:  #000000;
+}
+
+/*Thats all. I hope you enjoyed it.
+Thanks :)*/
+
+/* 여기까지 조직도 관련 CSS */
+
+.auto-size{ /* 실적 페이지 이미지 사이즈 */
+    width: 100%;
+}
